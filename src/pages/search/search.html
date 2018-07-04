@@ -1,7 +1,7 @@
 <ion-header>
     <ion-navbar>
         <ion-title>
-            About
+            Search
         </ion-title>
     </ion-navbar>
 </ion-header>
@@ -11,6 +11,7 @@
         [(ngModel)]="myInput"
         [showCancelButton]="shouldShowCancel"
         (ionCancel)="onCancel($event)">
+        <button ion-button item-end>Hi</button>
     </ion-searchbar>
 
     <ion-list>
