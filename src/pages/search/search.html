@@ -1,41 +1,24 @@
 <ion-header>
-    <ion-navbar>
-        <ion-title>
-            Search
-        </ion-title>
-    </ion-navbar>
+	<ion-navbar>
+		<ion-title>
+			Search
+		</ion-title>
+	</ion-navbar>
 </ion-header>
 
 <ion-content padding>
-    <ion-searchbar
-        [(ngModel)]="myInput"
-        [showCancelButton]="shouldShowCancel"
-        (ionCancel)="onCancel($event)">
-        <button ion-button item-end>Hi</button>
-    </ion-searchbar>
+	<ion-searchbar [(ngModel)]="myInput" [showCancelButton]="shouldShowCancel" (ionCancel)="onCancel($event)">
+	</ion-searchbar>
 
-    <ion-list>
-        <ion-item>
-            <ion-thumbnail item-start>
-                <img src="../../assets/imgs/logo.png">
-            </ion-thumbnail>
-            <h2>Bohemian Rhapsody</h2>
-            <p>The Best Of Queen</p>
-            <p>Queen</p>
-            <button ion-button item-end large round>
-                <ion-icon name="add"></ion-icon>
-            </button>
-        </ion-item>
-        <ion-item>
-            <ion-thumbnail item-start>
-                <img src="../../assets/imgs/logo.png">
-            </ion-thumbnail>
-            <h2>Paranoid Android</h2>
-            <p>OK Computer</p>
-            <p>Radiohead</p>
-            <button ion-button item-end outline large round>
-                <ion-icon name="add"></ion-icon>
-            </button>
-        </ion-item>
-    </ion-list>
+	<ion-item *ngFor="let result of results">
+		<ion-thumbnail item-start>
+			<img [src]="result.imgUrl">
+		</ion-thumbnail>
+		<h2>{{result.song}}</h2>
+		<p>{{result.album}}</p>
+		<p><b>{{result.artist}}</b></p>
+		<button ion-button item-end large round>
+			<ion-icon name="add"></ion-icon>
+		</button>
+	</ion-item>
 </ion-content>
