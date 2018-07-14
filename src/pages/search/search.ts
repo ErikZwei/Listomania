@@ -1,17 +1,22 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import { RestServiceProvider } from '../../providers/rest-service/rest-service'
 
 @Component({
   selector: 'page-search',
-  templateUrl: 'search.html'
+  templateUrl: 'search.html',
+	providers: [RestServiceProvider]
 })
 export class SearchPage {
 
 	results = [];
 
-  constructor(public navCtrl: NavController) {
+  constructor(public navCtrl: NavController, public restService: RestServiceProvider) {
 		this.navCtrl = navCtrl;
 		this.results = this.getResults();
+		restService.load().then(data => {
+			console.log(data);
+		});
   }
 
   getResults() {
@@ -41,7 +46,7 @@ export class SearchPage {
         artist: "The Shins",
         song: "Phantom Limb",
         album: "Wincing The Night Away",
-        addedBy: "ullsokk",
+        addedBy: "ullsokk1",
         imgUrl: "../../assets/imgs/logo.png"
       }
     ];
